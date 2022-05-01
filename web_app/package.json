@@ -5,10 +5,11 @@
     "scripts": {
         "wasm-build": "cargo build --target=wasm32-unknown-unknown",
         "wasm-build-release": "cargo build --release --target=wasm32-unknown-unknown",
-        "wasm-bindgen": "wasm-bindgen ../target/wasm32-unknown-unknown/release/minimal_wasm_template.wasm --target=web --out-dir=wasm --omit-default-module-path",
+        "wasm-bindgen": "wasm-bindgen ../target/wasm32-unknown-unknown/debug/minimal_wasm_template.wasm --target=web --out-dir=wasm --omit-default-module-path",
+        "wasm-bindgen-release": "wasm-bindgen ../target/wasm32-unknown-unknown/release/minimal_wasm_template.wasm --target=web --out-dir=wasm --omit-default-module-path",
         "start": "pnpm wasm-build && pnpm wasm-bindgen && webpack serve --config webpack.dev.js",
         "dev": "pnpm wasm-build && pnpm wasm-bindgen && webpack --config webpack.dev.js",
-        "prod": "pnpm wasm-build-release && pnpm wasm-bindgen && webpack --config webpack.prod.js"
+        "prod": "pnpm wasm-build-release && pnpm wasm-bindgen-release && webpack --config webpack.prod.js"
     },
     "browserslist": {
         "production": [
