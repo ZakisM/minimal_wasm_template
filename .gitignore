@@ -1,0 +1,7 @@
+target
+.pnpm-debug.log
+
+web_app/.DS_STORE
+web_app/node_modules
+web_app/dist
+web_app/wasm

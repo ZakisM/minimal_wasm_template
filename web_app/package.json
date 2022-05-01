@@ -1,0 +1,38 @@
+{
+    "name": "web_app",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "wasm-build-release": "cargo build --release --target=wasm32-unknown-unknown",
+        "wasm-bindgen": "wasm-bindgen ../target/wasm32-unknown-unknown/release/minimal_wasm_template.wasm --target=web --out-dir=wasm --omit-default-module-path",
+        "start": "pnpm wasm-build-release && pnpm wasm-bindgen && webpack serve --config webpack.dev.js",
+        "dev": "pnpm wasm-build-release && pnpm wasm-bindgen && webpack --config webpack.dev.js",
+        "prod": "pnpm wasm-build-release && pnpm wasm-bindgen && webpack --config webpack.prod.js"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@types/node": "^17.0.21",
+        "clean-webpack-plugin": "4.0.0",
+        "html-webpack-plugin": "^5.5.0",
+        "ts-loader": "^9.2.8",
+        "typescript": "^4.5.5",
+        "webpack": "^5.67.0",
+        "webpack-cli": "^4.9.2",
+        "webpack-dev-server": "4.8.1",
+        "webpack-merge": "^5.7.3"
+    },
+    "dependencies": {
+        "axios": "^0.26.1"
+    }
+}
